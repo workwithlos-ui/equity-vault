@@ -21,7 +21,7 @@ class Activity(Base):
     #        batch_imported, exported, comparison_created
     actor = Column(String(100), default="system")  # "system" or operator name
     summary = Column(Text)  # human-readable summary
-    metadata = Column(JSON, default=dict)  # action-specific data
+    extra_data = Column("metadata", JSON, default=dict)  # action-specific data
     created_at = Column(DateTime, default=datetime.utcnow, index=True)
 
 

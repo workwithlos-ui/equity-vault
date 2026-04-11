@@ -113,7 +113,7 @@ def get_deal_timeline(db: Session, deal_id) -> list:
             "action_type": a.action_type,
             "actor": a.actor,
             "summary": a.summary,
-            "metadata": a.metadata,
+            "metadata": a.extra_data,
             "created_at": a.created_at.isoformat() if a.created_at else None,
         }
         for a in activities
@@ -134,7 +134,7 @@ def log_activity(
         action_type=action_type,
         actor=actor,
         summary=summary,
-        metadata=metadata or {},
+        extra_data=metadata or {},
     )
     db.add(activity)
     db.commit()
